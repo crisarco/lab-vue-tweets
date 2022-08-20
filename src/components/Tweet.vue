@@ -1,17 +1,10 @@
 <template>
   <div className="tweet">
-    <img
-      :src= "user.image"
-      className="profile"
-      alt="profile"
-    />
+    <ProfileImage :image="user.image"/>
 
     <div className="body">
       <div className="top">
-        <span className="user">
-          <span className="name">{{user.name}}</span>
-          <span className="handle">{{user.handle}}</span>
-        </span>
+        <User :user="user"/>
 
         <span className="timestamp">{{timestamp}}</span>
       </div>
@@ -34,16 +27,20 @@
 </template>
 
 <script>
+import ProfileImage from './ProfileImage.vue';
+import User from './User.vue';
+
 export default {
-  props: {
-    user: {
-      name: String,
-      image: String,
-      handle: String,
+    props: {
+        user: {
+            name: String,
+            image: String,
+            handle: String,
+        },
+        timestamp: String,
+        message: String,
     },
-    timestamp: String,
-    message: String,
-  },
+    components: { ProfileImage, User }
 };
 </script>
 
